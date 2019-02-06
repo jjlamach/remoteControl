@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,130 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="remoteControl" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Channels" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMG-tV-hok">
+                                <rect key="frame" x="12" y="557" width="72" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="h3G-ct-ZC4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="biw-oR-pKG">
+                                <rect key="frame" x="150" y="550" width="244" height="29"/>
+                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <segments>
+                                    <segment title="ABC"/>
+                                    <segment title="NBC"/>
+                                    <segment title="CBS"/>
+                                    <segment title="Fox"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </segmentedControl>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAb-P3-Np6">
+                                <rect key="frame" x="164.66666666666666" y="282" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ya2-Qi-afA">
+                                <rect key="frame" x="16" y="284" width="55" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qr-MQ-aeS">
+                                <rect key="frame" x="16" y="332" width="68" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="C7Z-v1-wuH">
+                                <rect key="frame" x="148" y="334" width="248" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Channel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haQ-AV-fsA">
+                                <rect key="frame" x="16" y="394" width="73" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bfw-n6-PA0">
+                                <rect key="frame" x="158" y="393" width="30" height="35"/>
+                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="0">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGm-5Q-WRf">
+                                <rect key="frame" x="217" y="393" width="30" height="35"/>
+                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="1">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcU-EX-Zuu">
+                                <rect key="frame" x="284" y="393" width="30" height="35"/>
+                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="2">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0O-o0-KMb">
+                                <rect key="frame" x="351" y="394" width="30" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="3">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2qr-MQ-aeS" firstAttribute="top" secondItem="Ya2-Qi-afA" secondAttribute="bottom" constant="24" id="0ru-ia-t6x"/>
+                            <constraint firstItem="C7Z-v1-wuH" firstAttribute="top" secondItem="yAb-P3-Np6" secondAttribute="bottom" constant="21" id="45i-5k-gRQ"/>
+                            <constraint firstItem="fGm-5Q-WRf" firstAttribute="baseline" secondItem="Bfw-n6-PA0" secondAttribute="baseline" id="6VB-Cg-MLa"/>
+                            <constraint firstItem="AcU-EX-Zuu" firstAttribute="baseline" secondItem="fGm-5Q-WRf" secondAttribute="baseline" id="Foe-bo-sDi"/>
+                            <constraint firstItem="yAb-P3-Np6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="262" id="OeG-je-JQJ"/>
+                            <constraint firstItem="haQ-AV-fsA" firstAttribute="top" secondItem="2qr-MQ-aeS" secondAttribute="bottom" constant="38" id="Ske-gq-Gfn"/>
+                            <constraint firstItem="Bfw-n6-PA0" firstAttribute="top" secondItem="C7Z-v1-wuH" secondAttribute="bottom" constant="29" id="Sld-Mm-t2Q"/>
+                            <constraint firstItem="2qr-MQ-aeS" firstAttribute="leading" secondItem="Ya2-Qi-afA" secondAttribute="leading" id="Wgo-fc-HhC"/>
+                            <constraint firstItem="yAb-P3-Np6" firstAttribute="leading" secondItem="Ya2-Qi-afA" secondAttribute="trailing" constant="93.5" id="Ygp-u8-hjW"/>
+                            <constraint firstItem="haQ-AV-fsA" firstAttribute="leading" secondItem="2qr-MQ-aeS" secondAttribute="leading" id="ae8-PX-wmI"/>
+                            <constraint firstItem="fGm-5Q-WRf" firstAttribute="leading" secondItem="Bfw-n6-PA0" secondAttribute="trailing" constant="29" id="b7B-lr-JkO"/>
+                            <constraint firstItem="kMG-tV-hok" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="bwN-jl-Of7"/>
+                            <constraint firstItem="C7Z-v1-wuH" firstAttribute="leading" secondItem="biw-oR-pKG" secondAttribute="leading" id="hkD-9q-edt"/>
+                            <constraint firstItem="2qr-MQ-aeS" firstAttribute="trailing" secondItem="kMG-tV-hok" secondAttribute="trailing" id="ih7-Fy-BUj"/>
+                            <constraint firstItem="Ya2-Qi-afA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="jQW-SC-Dpm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kMG-tV-hok" secondAttribute="bottom" constant="158" id="kSV-ys-7sB"/>
+                            <constraint firstItem="Bfw-n6-PA0" firstAttribute="leading" secondItem="haQ-AV-fsA" secondAttribute="trailing" constant="69" id="l9g-Vm-DAl"/>
+                            <constraint firstItem="biw-oR-pKG" firstAttribute="leading" secondItem="kMG-tV-hok" secondAttribute="trailing" constant="66" id="u0n-xn-aJH"/>
+                            <constraint firstItem="C7Z-v1-wuH" firstAttribute="trailing" secondItem="biw-oR-pKG" secondAttribute="trailing" id="uEk-3o-dLH"/>
+                            <constraint firstItem="C7Z-v1-wuH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="x4V-MI-nBj"/>
+                            <constraint firstItem="AcU-EX-Zuu" firstAttribute="leading" secondItem="fGm-5Q-WRf" secondAttribute="trailing" constant="37" id="xcc-qE-RPL"/>
+                            <constraint firstItem="Ya2-Qi-afA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="264" id="xww-EB-iqr"/>
+                            <constraint firstItem="kMG-tV-hok" firstAttribute="bottom" secondItem="biw-oR-pKG" secondAttribute="bottom" id="zqF-hk-cYb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="Channels" destination="biw-oR-pKG" id="E8b-1D-0ps"/>
+                        <outlet property="one" destination="fGm-5Q-WRf" id="rVM-6I-9JA"/>
+                        <outlet property="power" destination="yAb-P3-Np6" id="3ZT-LS-lzt"/>
+                        <outlet property="three" destination="K0O-o0-KMb" id="lF3-rr-qi5"/>
+                        <outlet property="two" destination="AcU-EX-Zuu" id="70e-2n-5qr"/>
+                        <outlet property="volumeSlider" destination="C7Z-v1-wuH" id="Atj-n2-nQt"/>
+                        <outlet property="zero" destination="Bfw-n6-PA0" id="cgj-Cq-9Fs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="69.565217391304358" y="132.88043478260872"/>
         </scene>
     </scenes>
 </document>
