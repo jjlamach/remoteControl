@@ -10,10 +10,10 @@
 		432538EB220A5B4A00309852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432538EA220A5B4A00309852 /* AppDelegate.swift */; };
 		432538ED220A5B4A00309852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432538EC220A5B4A00309852 /* ViewController.swift */; };
 		432538F0220A5B4A00309852 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432538EE220A5B4A00309852 /* Main.storyboard */; };
-		432538F2220A5B4C00309852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 432538F1220A5B4C00309852 /* Assets.xcassets */; };
 		432538F5220A5B4C00309852 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432538F3220A5B4C00309852 /* LaunchScreen.storyboard */; };
 		43253900220A5B4C00309852 /* remoteControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432538FF220A5B4C00309852 /* remoteControlTests.swift */; };
 		4325390B220A5B4C00309852 /* remoteControlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4325390A220A5B4C00309852 /* remoteControlUITests.swift */; };
+		43D9ED36220CAB8100A50D8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43D9ED35220CAB8100A50D8D /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 		432538EA220A5B4A00309852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		432538EC220A5B4A00309852 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		432538EF220A5B4A00309852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		432538F1220A5B4C00309852 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		432538F4220A5B4C00309852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		432538F6220A5B4C00309852 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		432538FB220A5B4C00309852 /* remoteControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = remoteControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +46,7 @@
 		43253906220A5B4C00309852 /* remoteControlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = remoteControlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4325390A220A5B4C00309852 /* remoteControlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = remoteControlUITests.swift; sourceTree = "<group>"; };
 		4325390C220A5B4C00309852 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43D9ED35220CAB8100A50D8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,10 +97,10 @@
 		432538E9220A5B4A00309852 /* remoteControl */ = {
 			isa = PBXGroup;
 			children = (
+				43D9ED35220CAB8100A50D8D /* Assets.xcassets */,
 				432538EA220A5B4A00309852 /* AppDelegate.swift */,
 				432538EC220A5B4A00309852 /* ViewController.swift */,
 				432538EE220A5B4A00309852 /* Main.storyboard */,
-				432538F1220A5B4C00309852 /* Assets.xcassets */,
 				432538F3220A5B4C00309852 /* LaunchScreen.storyboard */,
 				432538F6220A5B4C00309852 /* Info.plist */,
 			);
@@ -230,7 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				432538F5220A5B4C00309852 /* LaunchScreen.storyboard in Resources */,
-				432538F2220A5B4C00309852 /* Assets.xcassets in Resources */,
+				43D9ED36220CAB8100A50D8D /* Assets.xcassets in Resources */,
 				432538F0220A5B4A00309852 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    // channels
+    /* Channels */
     @IBOutlet weak var Channels: UISegmentedControl!
     
    /* On/Off button */
@@ -19,9 +19,10 @@ class ViewController: UIViewController {
     /* Slider. */
     @IBOutlet weak var volumeSlider: UISlider!
     
-    /* Warnings */
+    /* Warnings and messages */
     @IBOutlet weak var messages: UILabel!
     let messageTVisOff = "Your TV is off. Turn it on"
+    var watching = ""
     
     
     /* Channel buttons. */
@@ -46,7 +47,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var volumeValue: UILabel!
     
-    // current channel
+    /* Channel selected */
     @IBOutlet weak var channelValue: UILabel!
     
     
@@ -59,6 +60,17 @@ class ViewController: UIViewController {
     
     
     /*
+        Favorite channels images.
+    */
+    @IBOutlet weak var channelImage: UIImageView!
+    
+    
+    
+    
+    
+    
+    
+    /*
         Turn on/off
     */
     @IBAction func power(_ sender: UISwitch) {
@@ -67,10 +79,9 @@ class ViewController: UIViewController {
             self.powerValue.text = "On"
             // reset the warning screen to empty.
             self.messages.text = ""
+            selectedChannel(Channels)
         } else {
-            self.powerValue.text = "Off"
             resetValues()
-            self.volumeSlider.value = 0
         }
     }
     
@@ -83,12 +94,16 @@ class ViewController: UIViewController {
             let volumeVal = Int(self.volumeSlider.value)
             self.volumeValue.text = String(volumeVal)
             self.messages.text = ""
-        } else {
+        }
+        else {
             self.volumeSlider.value = 0
             self.messages.text = self.messageTVisOff
         }
     }
     
+    /*
+        Changes the channel.
+    */
     @IBAction func channelChanger(_ sender: UIButton) {
         if !self.power.isOn {
             return
@@ -143,6 +158,9 @@ class ViewController: UIViewController {
         self.messages.text = ""
         self.volumeValue.text = ""
         self.channelValue.text = "1"
+        self.volumeSlider.value = 0
+        self.powerValue.text = "Off"
+        self.channelImage.image = UIImage(named: "tvoff")
     }
     
     
@@ -152,27 +170,47 @@ class ViewController: UIViewController {
         if !self.power.isOn {
             return
         }
-        if let currentChBtn:UIButton = sender {
-            if currentChBtn.currentTitle == "Ch+" {
-                var tempValue:Int =
-                    Int(self.channelValue.text!)!
-                tempValue = tempValue + 1
-                if tempValue > 100 {
-                    tempValue = tempValue - 1;
+        if sender.currentTitle == "Ch+" {
+            if let currentText = self.channelValue.text {
+                var temporaryValue:Int = Int(currentText)!
+                temporaryValue = temporaryValue + 1
+                if temporaryValue > 100 {
+                    temporaryValue = temporaryValue - 1
                 }
-
-                self.channelValue.text = String(tempValue)
-                
-            } else {
-                var tempValue:Int = Int(self.channelValue.text!)!
-                tempValue = tempValue - 1
-                if tempValue < 0 {
-                    tempValue = tempValue + 1
+                self.channelValue.text = String(temporaryValue)
+            }
+        }
+        else {
+            if let currentText = self.channelValue.text {
+                var temporaryValue:Int = Int(currentText)!
+                temporaryValue = temporaryValue - 1
+                if temporaryValue < 0 {
+                    temporaryValue = temporaryValue + 1
                 }
-                self.channelValue.text = String(tempValue)
+                self.channelValue.text = String(temporaryValue)
             }
         }
     }
+    
+    /* Segmented control */
+    @IBAction func selectedChannel(_ sender: UISegmentedControl) {
+        if !self.power.isOn {
+            return
+        }
+        if sender.selectedSegmentIndex == 0 {
+            channelImage.image = UIImage(named: "Image")
+        }
+        else if sender.selectedSegmentIndex == 2 {
+            self.channelImage.image = UIImage(named: "cbs-news-logo")
+        }
+        else if sender.selectedSegmentIndex == 1 {
+            self.channelImage.image = UIImage(named: "nbc")
+        }
+        else if sender.selectedSegmentIndex == 3 {
+            self.channelImage.image = UIImage(named: "fox-news")
+        }
+    }
+    
     
     
     override func viewDidLoad() {

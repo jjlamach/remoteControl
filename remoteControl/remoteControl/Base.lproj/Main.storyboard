@@ -27,7 +27,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="biw-oR-pKG">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="biw-oR-pKG">
                                 <rect key="frame" x="155" y="615" width="222" height="29"/>
                                 <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
@@ -37,6 +37,9 @@
                                     <segment title="Fox"/>
                                 </segments>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="selectedChannel:" destination="BYZ-38-t0r" eventType="valueChanged" id="gQt-Sa-7rl"/>
+                                </connections>
                             </segmentedControl>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAb-P3-Np6">
                                 <rect key="frame" x="166" y="282" width="51" height="31"/>
@@ -274,6 +277,13 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qAm-uZ-UtW">
+                                <rect key="frame" x="266" y="39" width="128" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="RoB-CI-plE"/>
+                                    <constraint firstAttribute="height" constant="80" id="xMC-rs-9k6"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -302,6 +312,7 @@
                             <constraint firstItem="k9z-NI-c3g" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Lii-e6-aGd"/>
                             <constraint firstItem="W1b-UN-dTM" firstAttribute="leading" secondItem="H2c-nt-eam" secondAttribute="leading" id="MAz-7e-D4S"/>
                             <constraint firstItem="2qr-MQ-aeS" firstAttribute="top" secondItem="Ya2-Qi-afA" secondAttribute="bottom" constant="24" id="MgM-zK-hwd"/>
+                            <constraint firstItem="qAm-uZ-UtW" firstAttribute="trailing" secondItem="C7Z-v1-wuH" secondAttribute="trailing" id="Ns3-I9-nqF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="K0O-o0-KMb" secondAttribute="trailing" constant="33" id="ORz-TC-zE7"/>
                             <constraint firstItem="haQ-AV-fsA" firstAttribute="leading" secondItem="2qr-MQ-aeS" secondAttribute="leading" id="P0y-GP-Kft"/>
                             <constraint firstItem="W1b-UN-dTM" firstAttribute="top" secondItem="K0O-o0-KMb" secondAttribute="bottom" constant="27" id="T8e-AQ-3GY"/>
@@ -332,6 +343,7 @@
                             <constraint firstItem="UtY-Ne-t6o" firstAttribute="firstBaseline" secondItem="oQ2-MW-EHi" secondAttribute="firstBaseline" id="hpj-h7-Ymq"/>
                             <constraint firstItem="rmZ-M3-sVS" firstAttribute="leading" secondItem="apC-X2-WBg" secondAttribute="leading" id="jET-F3-fbM"/>
                             <constraint firstItem="pID-Ra-cEI" firstAttribute="centerY" secondItem="gDk-a4-IF0" secondAttribute="centerY" id="jW7-PE-9em"/>
+                            <constraint firstItem="qAm-uZ-UtW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="19" id="jrj-ei-Bc5"/>
                             <constraint firstItem="4ez-AM-K0m" firstAttribute="leading" secondItem="biw-oR-pKG" secondAttribute="leading" id="kEr-bp-cG1"/>
                             <constraint firstItem="K0O-o0-KMb" firstAttribute="leading" secondItem="W1b-UN-dTM" secondAttribute="leading" id="kag-zQ-E6z"/>
                             <constraint firstItem="rmZ-M3-sVS" firstAttribute="baseline" secondItem="SwL-Nf-LTI" secondAttribute="baseline" id="mOj-u6-8ft"/>
@@ -351,6 +363,7 @@
                         <outlet property="Channels" destination="biw-oR-pKG" id="E8b-1D-0ps"/>
                         <outlet property="chDown" destination="eFC-vq-BZs" id="evM-JA-dkJ"/>
                         <outlet property="chUp" destination="4ez-AM-K0m" id="I6a-z7-7vL"/>
+                        <outlet property="channelImage" destination="qAm-uZ-UtW" id="LdM-mW-Rfi"/>
                         <outlet property="channelValue" destination="pID-Ra-cEI" id="WW8-MD-usg"/>
                         <outlet property="eight" destination="xZH-bP-NOa" id="2Ih-kh-Gq6"/>
                         <outlet property="five" destination="SwL-Nf-LTI" id="C9l-2A-L56"/>
@@ -374,4 +387,7 @@
             <point key="canvasLocation" x="69.565217391304358" y="132.88043478260872"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="642" height="218.25"/>
+    </resources>
 </document>
