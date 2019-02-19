@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var volumeSlider: UISlider!
     
     /* Warnings and messages */
-    @IBOutlet weak var messages: UILabel!
     let messageTVisOff = "Your TV is off. Turn it on"
     var watching = ""
     
@@ -64,12 +63,6 @@ class ViewController: UIViewController {
     */
     @IBOutlet weak var channelImage: UIImageView!
     
-    
-    
-    
-    
-    
-    
     /*
         Turn on/off
     */
@@ -77,8 +70,6 @@ class ViewController: UIViewController {
         self.power = sender
         if self.power.isOn {
             self.powerValue.text = "On"
-            // reset the warning screen to empty.
-            self.messages.text = ""
             selectedChannel(Channels)
         } else {
             resetValues()
@@ -93,11 +84,9 @@ class ViewController: UIViewController {
             self.volumeSlider = sender
             let volumeVal = Int(self.volumeSlider.value)
             self.volumeValue.text = String(volumeVal)
-            self.messages.text = ""
         }
         else {
             self.volumeSlider.value = 0
-            self.messages.text = self.messageTVisOff
         }
     }
     
@@ -155,7 +144,6 @@ class ViewController: UIViewController {
     
     /* Function that resets values based on the state of the TV.*/
     func resetValues() -> Void {
-        self.messages.text = ""
         self.volumeValue.text = ""
         self.channelValue.text = "1"
         self.volumeSlider.value = 0
@@ -216,6 +204,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 }
 
