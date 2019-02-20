@@ -448,7 +448,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dk-sS-DWV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dk-sS-DWV">
                                         <rect key="frame" x="196" y="140" width="136" height="26"/>
                                         <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -489,7 +489,8 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Play"/>
                                         <connections>
-                                            <action selector="dvrStateRecognizer:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="MgH-aF-N00"/>
+                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="Pbf-jZ-D7K"/>
+                                            <action selector="play:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="xJ9-On-VYN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hA7-vZ-hvr">
@@ -497,7 +498,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Pause"/>
                                         <connections>
-                                            <action selector="dvrStateRecognizer:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="ENz-Rb-jnm"/>
+                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="f5e-Iw-353"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsq-Pq-6QE">
@@ -505,7 +506,8 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Stop"/>
                                         <connections>
-                                            <action selector="dvrStateRecognizer:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="fHr-ja-YlC"/>
+                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="Guy-Z2-Dce"/>
+                                            <action selector="stop:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="sDj-pW-99h"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTv-Yt-BtY">
@@ -517,7 +519,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Fast Forward"/>
                                         <connections>
-                                            <action selector="dvrStateRecognizer:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="ANW-yG-Jtb"/>
+                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="GLM-hx-V0v"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uS8-ig-IZU">
@@ -525,7 +527,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Fast Rewind"/>
                                         <connections>
-                                            <action selector="dvrStateRecognizer:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="FoF-z4-qld"/>
+                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="K0W-4Z-DXh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4g-Q6-vJd">
@@ -536,7 +538,8 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Record"/>
                                         <connections>
-                                            <action selector="dvrStateRecognizer:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="MLB-VB-tfd"/>
+                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="4Dd-gG-rKw"/>
+                                            <action selector="record:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="SCT-Ku-cXB"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -599,6 +602,7 @@
                         <outlet property="dvrCtrlState" destination="9dk-sS-DWV" id="0eg-fe-t52"/>
                         <outlet property="dvrOnOffState" destination="nhY-XD-hDt" id="nRs-vd-ftd"/>
                         <outlet property="dvrPowerState" destination="xAe-vq-Y2w" id="FUL-6m-CvI"/>
+                        <outlet property="onOffButton" destination="EjG-zU-SSm" id="KTx-Yr-VI0"/>
                         <outletCollection property="dvrButtons" destination="YjP-et-iFe" collectionClass="NSMutableArray" id="N9T-vo-xdp"/>
                         <outletCollection property="dvrButtons" destination="hsq-Pq-6QE" collectionClass="NSMutableArray" id="5Lo-8t-DOU"/>
                         <outletCollection property="dvrButtons" destination="hA7-vZ-hvr" collectionClass="NSMutableArray" id="lVs-4v-ygK"/>
