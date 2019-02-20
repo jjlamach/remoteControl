@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// TODO: Change disable logic for buttons.
 class DVRController: UIViewController {
 
     @IBOutlet weak var dvrPowerState: UILabel!
@@ -25,7 +25,7 @@ class DVRController: UIViewController {
     @IBOutlet weak var onOffButton: UISwitch!
     
     // Enum for DVR control states.
-    enum DvrControlStates: String {
+    enum DvrControlStates: String, CaseIterable {
         case Off = ""
         case Stopped = "Stopped"
         case Playing = "Playing"
@@ -38,10 +38,9 @@ class DVRController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        onOffButton.isOn = false
-        dvrOnOffState.text = "Off"
-        disableAllButtons(dvrButtons)
+        self.onOffButton.isOn = false
+        self.dvrOnOffState.text = "Off"
+        enableOrDisableButtons(dvrButtons, onOffButton)
     }
     
     /*
@@ -58,66 +57,76 @@ class DVRController: UIViewController {
     @IBAction func dvrOnOffBtnAction(_ sender: UISwitch) {
         if sender.isOn {
            dvrOnOffState.text = "On"
-            enableAllButtons(dvrButtons)
             dvrCtrlState.text = DvrControlStates.Stopped.rawValue
+            enableOrDisableButtons(dvrButtons, sender)
         }
         else {
             dvrOnOffState.text = "Off"
             dvrCtrlState.text = DvrControlStates.Off.rawValue
-            disableAllButtons(dvrButtons)
+            enableOrDisableButtons(dvrButtons, sender)
         }
     }
     
     /*
-        Function that disables all buttons.
+        Disables all buttons when the power is "Off".
     */
-    func disableAllButtons(_ buttons: [UIButton]) -> Void {
-        for button in buttons {
-            if button.isEnabled {
-                button.isEnabled = false
+    private func enableOrDisableButtons(_ buttons: [UIButton], _ dvrState: UISwitch) -> Void {
+        if !dvrState.isOn {
+            for button in buttons {
+                let currentBtn = button
+                if currentBtn.isEnabled {
+                    currentBtn.isEnabled = false
+                }
+            }
+        }
+        else if dvrState.isOn {
+            for button in buttons {
+                let currentBtn = button
+                if !currentBtn.isEnabled {
+                    currentBtn.isEnabled = true
+                }
             }
         }
     }
+    
     
     /*
-     Function that enables all buttons.
+        Alerts that the DVR controler is off.
     */
-    func enableAllButtons(_ buttons: [UIButton]) -> Void {
-        for button in buttons {
-            if !button.isEnabled {
-                button.isEnabled = true
-            }
-        }
+    private func generalAlertMessage(message: String) -> Void {
+        let alertCtrl: UIAlertController = UIAlertController()
+        let message = message
+        
+        let alertAction: UIAlertAction = UIAlertAction(title: message, style: .default, handler: nil)
+        
+        alertCtrl.addAction(alertAction)
+        present(alertCtrl, animated: true, completion: nil)
     }
     
     
     /*
-     The“Play” button will start or resume normal playing.Pausing,fastforwarding
-     or rewinding is only possible when the DVR is in the Playing state.
+     Gives the action to change state.
     */
-    @IBAction func play(_ sender: UIButton) {
-        verifyIfButtonIsAvailable(sender)
-        if sender.isEnabled && self.onOffButton.isOn {
-            ctrlInPlayingState()
-        }
+    private func changeCurrentState(button: UIButton)-> Void {
+        let title = "Change Current State?"
+        let message = "You have selected state: \(button.currentTitle!)"
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel Current DVR State", style: .destructive, handler: nil)
+        
+        // get the button
+        let button = getButton(button.currentTitle!, buttons: dvrButtons)
+        
+        let okayAction = UIAlertAction(title: "Proceed to \(button.currentTitle!)", style: .default, handler: nil)
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(okayAction)
+        present(alertController, animated: true, completion: nil)
     }
     
-    // helper function for the "Play" button.
-    private func ctrlInPlayingState()-> Void {
-        let buttonNames: [String] = [
-            "Pause", "Fast Forward", "Fast Rewind",
-            "Play", "Stop"
-        ]
-        for button in dvrButtons {
-            if buttonNames.contains(button.currentTitle!) {
-                button.isEnabled = true
-            }
-            if !buttonNames.contains(button.currentTitle!) {
-                button.isEnabled = false
-            }
-        }
-    }
     
+
     /*
      Gets a button from the buttons collection.
     */
@@ -138,88 +147,59 @@ class DVRController: UIViewController {
         Stop button action.
     */
     @IBAction func stop(_ sender: UIButton) {
-        verifyIfButtonIsAvailable(sender)
-        enableAllButtons(dvrButtons)
+        dvrCtrlState.text = DvrControlStates.Stopped.rawValue
     }
     
-    /*
-        Detects the current state of the DVR controller.
-    */
-    @IBAction func dvrCtrlStateIdentifier(_ sender: UIButton) {
-        verifyIfButtonIsAvailable(sender)
-        if sender.isEnabled {
-            let currentBtnName = sender.currentTitle!
-            if currentBtnName == "Play" {
-                dvrCtrlState.text = DvrControlStates.Playing.rawValue
-            }
-            else if currentBtnName == "Stop" {
-                dvrCtrlState.text = DvrControlStates.Stopped.rawValue
-            }
-            else if currentBtnName == "Pause" {
-                dvrCtrlState.text = DvrControlStates.Paused.rawValue
-            }
-            else if currentBtnName == "Fast Forward" {
-                dvrCtrlState.text = DvrControlStates.FastForwarding.rawValue
-            }
-            else if currentBtnName == "Fast Rewind" {
-                dvrCtrlState.text = DvrControlStates.FastRewinding.rawValue
-            }
-            else if currentBtnName == "Record" {
-                dvrCtrlState.text = DvrControlStates.Recording.rawValue
-            }
-        }
-    }
+    
     
     /*
         The record button action.
     */
     @IBAction func record(_ sender: UIButton) {
-        verifyIfButtonIsAvailable(sender)
-        let buttonNames: [String] = [
-            "Play", "Pause", "Fast Forward",
-            "Fast Rewind"
-        ]
-        if sender.isEnabled && onOffButton.isOn {
-            for button in dvrButtons {
-                let currentButton = button
-                if buttonNames.contains(currentButton.currentTitle!) {
-                    currentButton.isEnabled = false
-                }
-            }
-        }
-    }
-    
-    /*
-        If the passed UIButton is enabled a Pop-up alert will be shown.
-    */
-    private func verifyIfButtonIsAvailable(_ button: UIButton) -> Void {
-        if button.isEnabled {
+        if dvrCtrlState.text != "Stopped" {
+            dvrCtrlState.text = DvrControlStates.Off.rawValue
+            changeCurrentState(button: sender)
             return
         }
-        else if !button.isEnabled {
-            let title = "Canceling Current DVR Controler Action"
-            let notEnabledBtn: UIAlertController = UIAlertController( title: title, message: "", preferredStyle: .alert)
-            
-            let cancelAction = UIAlertAction(title: "Canceling current DVR Operation", style: .cancel, handler: nil)
-            
-            let okayAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
-            
-            notEnabledBtn.addAction(cancelAction)
-            notEnabledBtn.addAction(okayAction)
-            present(notEnabledBtn, animated: true, completion: nil)
+        else if dvrCtrlState.text == "Stopped" {
+            dvrCtrlState.text = DvrControlStates.Recording.rawValue
         }
     }
     
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func play(_ sender: UIButton) {
+        if self.dvrCtrlState.text == "Recording" {
+            changeCurrentState(button: sender)
+        }
+        else {
+            self.dvrCtrlState.text = DvrControlStates.Playing.rawValue
+        }
     }
-    */
-
+    
+    @IBAction func pause(_ sender: UIButton) {
+        if self.dvrCtrlState.text == "Recording" {
+            changeCurrentState(button: sender)
+        }
+        else {
+            self.dvrCtrlState.text = DvrControlStates.Paused.rawValue
+        }
+    }
+    
+    @IBAction func fastForwarding(_ sender: UIButton) {
+        if self.dvrCtrlState.text == "Recording" {
+            changeCurrentState(button: sender)
+        }
+        else {
+            self.dvrCtrlState.text = DvrControlStates.FastForwarding.rawValue
+        }
+    }
+    
+    @IBAction func fastRewinding(_ sender: UIButton) {
+        if self.dvrCtrlState.text == "Recording" {
+            changeCurrentState(button: sender)
+        }
+        else {
+            self.dvrCtrlState.text = DvrControlStates.FastRewinding.rawValue
+        }
+    }
 }

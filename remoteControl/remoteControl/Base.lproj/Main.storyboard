@@ -489,8 +489,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Play"/>
                                         <connections>
-                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="Pbf-jZ-D7K"/>
-                                            <action selector="play:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="xJ9-On-VYN"/>
+                                            <action selector="play:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="8Cm-B5-J57"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hA7-vZ-hvr">
@@ -498,7 +497,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Pause"/>
                                         <connections>
-                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="f5e-Iw-353"/>
+                                            <action selector="pause:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="GMJ-OY-kDc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsq-Pq-6QE">
@@ -506,7 +505,6 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Stop"/>
                                         <connections>
-                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="Guy-Z2-Dce"/>
                                             <action selector="stop:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="sDj-pW-99h"/>
                                         </connections>
                                     </button>
@@ -519,7 +517,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Fast Forward"/>
                                         <connections>
-                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="GLM-hx-V0v"/>
+                                            <action selector="fastForwarding:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="OeA-49-Q7a"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uS8-ig-IZU">
@@ -527,7 +525,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Fast Rewind"/>
                                         <connections>
-                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="K0W-4Z-DXh"/>
+                                            <action selector="fastRewinding:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="ijT-oo-NTW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4g-Q6-vJd">
@@ -538,7 +536,6 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <state key="normal" title="Record"/>
                                         <connections>
-                                            <action selector="dvrCtrlStateIdentifier:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="4Dd-gG-rKw"/>
                                             <action selector="record:" destination="CCY-Cz-Uzm" eventType="touchUpInside" id="SCT-Ku-cXB"/>
                                         </connections>
                                     </button>
