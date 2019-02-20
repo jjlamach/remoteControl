@@ -7,7 +7,7 @@
 //
 
 import UIKit
-// TODO: Change disable logic for buttons.
+
 class DVRController: UIViewController {
 
     @IBOutlet weak var dvrPowerState: UILabel!
@@ -104,6 +104,7 @@ class DVRController: UIViewController {
     }
     
     
+    
     /*
      Gives the action to change state.
     */
@@ -111,18 +112,73 @@ class DVRController: UIViewController {
         let title = "Change Current State?"
         let message = "You have selected state: \(button.currentTitle!)"
         
+        // alert controller.
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel Current DVR State", style: .destructive, handler: nil)
-        
+    
         // get the button
-        let button = getButton(button.currentTitle!, buttons: dvrButtons)
+        let theButton = getButton(button.currentTitle!, buttons: dvrButtons)
         
-        let okayAction = UIAlertAction(title: "Proceed to \(button.currentTitle!)", style: .default, handler: nil)
+        
+        let okayAction = UIAlertAction(
+            title: "Proceed to \(theButton.currentTitle!)",
+            style: .default,
+            handler:
+            {
+                (action: UIAlertAction!)
+                    in
+                self.dvrCtrlState.text = self.getDVRstate(theButton)
+            }
+        )
+        
+        // the cancel action.
+        let cancelAction = UIAlertAction(
+            title: "Cancel Current DVR State",
+            style: .destructive,
+            handler: {
+                (action: UIAlertAction!)
+                in
+               return
+            }
+        )
+        
+        
         
         alertController.addAction(cancelAction)
         alertController.addAction(okayAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    /*
+        Gets the current DVRState from the button that has been pressed.
+    */
+    private func getDVRstate(_ pressedBtn: UIButton) -> String {
+        var result: String = ""
+        var tempStr:String = ""
+        for button in dvrButtons {
+            if button == pressedBtn {
+                tempStr = button.currentTitle!
+            }
+        }
+        if tempStr == "Play" {
+            result = DvrControlStates.Playing.rawValue
+        }
+        else if tempStr == "Stop" {
+            result = DvrControlStates.Stopped.rawValue
+        }
+        else if tempStr == "Pause" {
+            result = DvrControlStates.Paused.rawValue
+        }
+        else if tempStr == "Fast Forward" {
+            result = DvrControlStates.FastForwarding.rawValue
+        }
+        else if tempStr == "Fast Rewind" {
+            result = DvrControlStates.FastRewinding.rawValue
+        }
+        else if tempStr == "Record" {
+            result = DvrControlStates.Recording.rawValue
+        }
+        return result
     }
     
     
@@ -157,9 +213,7 @@ class DVRController: UIViewController {
     */
     @IBAction func record(_ sender: UIButton) {
         if dvrCtrlState.text != "Stopped" {
-            dvrCtrlState.text = DvrControlStates.Off.rawValue
             changeCurrentState(button: sender)
-            return
         }
         else if dvrCtrlState.text == "Stopped" {
             dvrCtrlState.text = DvrControlStates.Recording.rawValue
@@ -180,8 +234,11 @@ class DVRController: UIViewController {
         if self.dvrCtrlState.text == "Recording" {
             changeCurrentState(button: sender)
         }
-        else {
+        else if self.dvrCtrlState.text == "Playing" {
             self.dvrCtrlState.text = DvrControlStates.Paused.rawValue
+        }
+        else if self.dvrCtrlState.text != "Playing" {
+            generalAlertMessage(message: "Must be in Playing state.")
         }
     }
     
@@ -189,8 +246,11 @@ class DVRController: UIViewController {
         if self.dvrCtrlState.text == "Recording" {
             changeCurrentState(button: sender)
         }
-        else {
+        else if self.dvrCtrlState.text == "Playing" {
             self.dvrCtrlState.text = DvrControlStates.FastForwarding.rawValue
+        }
+        else if self.dvrCtrlState.text != "Playing" {
+            generalAlertMessage(message: "Must be in Playing state.")
         }
     }
     
@@ -198,8 +258,11 @@ class DVRController: UIViewController {
         if self.dvrCtrlState.text == "Recording" {
             changeCurrentState(button: sender)
         }
-        else {
+        else if self.dvrCtrlState.text == "Playing" {
             self.dvrCtrlState.text = DvrControlStates.FastRewinding.rawValue
+        }
+        else if self.dvrCtrlState.text != "Playing" {
+            generalAlertMessage(message: "Must be in Playing state.")
         }
     }
 }
