@@ -25,6 +25,7 @@ class DVRController: UIViewController {
     @IBOutlet weak var onOffButton: UISwitch!
     
     // Enum for DVR control states.
+    // CaseIterable for traverse through its properties.
     enum DvrControlStates: String, CaseIterable {
         case Off = ""
         case Stopped = "Stopped"
@@ -68,7 +69,7 @@ class DVRController: UIViewController {
     }
     
     /*
-        Disables all buttons when the power is "Off".
+        Disables/enables all buttons when the power is "Off"/"On".
     */
     private func enableOrDisableButtons(_ buttons: [UIButton], _ dvrState: UISwitch) -> Void {
         if !dvrState.isOn {
@@ -91,7 +92,7 @@ class DVRController: UIViewController {
     
     
     /*
-        Alerts that the DVR controler is off.
+        A general pop-up message.
     */
     private func generalAlertMessage(message: String) -> Void {
         let alertCtrl: UIAlertController = UIAlertController()
@@ -106,7 +107,7 @@ class DVRController: UIViewController {
     
     
     /*
-     Gives the action to change state.
+        Gives the action to change state.
     */
     private func changeCurrentState(button: UIButton)-> Void {
         let title = "Change Current State?"
@@ -116,10 +117,13 @@ class DVRController: UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
     
-        // get the button
+        /*
+            We get the button that has been clicked for the UIAlertController so that we know
+            its name and what the next DVR state is going to be.
+         */
         let theButton = getButton(button.currentTitle!, buttons: dvrButtons)
         
-        
+        // the okay action.
         let okayAction = UIAlertAction(
             title: "Proceed to \(theButton.currentTitle!)",
             style: .default,
@@ -128,6 +132,8 @@ class DVRController: UIViewController {
                 (action: UIAlertAction!)
                     in
                 self.dvrCtrlState.text = self.getDVRstate(theButton)
+                // confirm that request went okay
+                self.generalAlertMessage(message: "Successfully Requested DVR State: \(theButton.currentTitle!)")
             }
         )
         
@@ -150,7 +156,8 @@ class DVRController: UIViewController {
     }
     
     /*
-        Gets the current DVRState from the button that has been pressed.
+        Gets the current DVRState from the button that has been pressed
+        and displays it on the UIField.
     */
     private func getDVRstate(_ pressedBtn: UIButton) -> String {
         var result: String = ""
@@ -209,7 +216,7 @@ class DVRController: UIViewController {
     
     
     /*
-        The record button action.
+        The Record button action.
     */
     @IBAction func record(_ sender: UIButton) {
         if dvrCtrlState.text != "Stopped" {
@@ -220,7 +227,9 @@ class DVRController: UIViewController {
         }
     }
     
-    
+    /*
+        Play Action.
+    */
     @IBAction func play(_ sender: UIButton) {
         if self.dvrCtrlState.text == "Recording" {
             changeCurrentState(button: sender)
@@ -230,6 +239,9 @@ class DVRController: UIViewController {
         }
     }
     
+    /*
+        Pause action.
+    */
     @IBAction func pause(_ sender: UIButton) {
         if self.dvrCtrlState.text == "Recording" {
             changeCurrentState(button: sender)
@@ -242,6 +254,9 @@ class DVRController: UIViewController {
         }
     }
     
+    /*
+        Fast Forwarding action.
+    */
     @IBAction func fastForwarding(_ sender: UIButton) {
         if self.dvrCtrlState.text == "Recording" {
             changeCurrentState(button: sender)
@@ -254,6 +269,9 @@ class DVRController: UIViewController {
         }
     }
     
+    /*
+        Fast Rewinding action.
+    */
     @IBAction func fastRewinding(_ sender: UIButton) {
         if self.dvrCtrlState.text == "Recording" {
             changeCurrentState(button: sender)
