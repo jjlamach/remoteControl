@@ -36,6 +36,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var eight: UIButton!
     @IBOutlet weak var nine: UIButton!
     
+    
+    
+    
+    
     /* Channels buttons +/- */
     @IBOutlet weak var chUp: UIButton!
     @IBOutlet weak var chDown: UIButton!
@@ -62,6 +66,13 @@ class ViewController: UIViewController {
         Favorite channels images.
     */
     @IBOutlet weak var channelImage: UIImageView!
+    
+    
+    
+    // to receive the data
+    var newBtnName: String = ""
+    var myData: TVData?;
+    
     
     /*
         Turn on/off
@@ -200,14 +211,22 @@ class ViewController: UIViewController {
     }
     
     
+
+    
+    /*
+        Access data here.
+    */
+    override func viewWillAppear(_ animated: Bool) {
+//        self.Channels.setTitle(TVData.sharedInstance.getButtonName(), forSegmentAt: TVData.sharedInstance.getSegmentIndex())
+        if TVData.sharedInstance.getButtonName() != "" {
+            self.Channels.setTitle(TVData.sharedInstance.getButtonName(), forSegmentAt: TVData.sharedInstance.getSegmentIndex())
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
 }
 

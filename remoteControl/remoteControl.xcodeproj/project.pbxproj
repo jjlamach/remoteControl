@@ -13,6 +13,8 @@
 		432538F5220A5B4C00309852 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432538F3220A5B4C00309852 /* LaunchScreen.storyboard */; };
 		43253900220A5B4C00309852 /* remoteControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432538FF220A5B4C00309852 /* remoteControlTests.swift */; };
 		4325390B220A5B4C00309852 /* remoteControlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4325390A220A5B4C00309852 /* remoteControlUITests.swift */; };
+		4358C8B8222710FB00233E41 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4358C8B7222710FB00233E41 /* ConfigurationViewController.swift */; };
+		4358C8BB222716B500233E41 /* TVData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4358C8BA222716B500233E41 /* TVData.swift */; };
 		43D9ED36220CAB8100A50D8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43D9ED35220CAB8100A50D8D /* Assets.xcassets */; };
 		43DDC63B221C66AB008FA80A /* DVRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DDC63A221C66AB008FA80A /* DVRController.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +49,8 @@
 		43253906220A5B4C00309852 /* remoteControlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = remoteControlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4325390A220A5B4C00309852 /* remoteControlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = remoteControlUITests.swift; sourceTree = "<group>"; };
 		4325390C220A5B4C00309852 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4358C8B7222710FB00233E41 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		4358C8BA222716B500233E41 /* TVData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVData.swift; sourceTree = "<group>"; };
 		43D9ED35220CAB8100A50D8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43DDC63A221C66AB008FA80A /* DVRController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVRController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +83,7 @@
 		432538DE220A5B4A00309852 = {
 			isa = PBXGroup;
 			children = (
+				4358C8B9222716A500233E41 /* data */,
 				432538E9220A5B4A00309852 /* remoteControl */,
 				432538FE220A5B4C00309852 /* remoteControlTests */,
 				43253909220A5B4C00309852 /* remoteControlUITests */,
@@ -103,6 +108,7 @@
 				432538EA220A5B4A00309852 /* AppDelegate.swift */,
 				432538EC220A5B4A00309852 /* ViewController.swift */,
 				432538EE220A5B4A00309852 /* Main.storyboard */,
+				4358C8B7222710FB00233E41 /* ConfigurationViewController.swift */,
 				432538F3220A5B4C00309852 /* LaunchScreen.storyboard */,
 				432538F6220A5B4C00309852 /* Info.plist */,
 				43DDC63A221C66AB008FA80A /* DVRController.swift */,
@@ -126,6 +132,14 @@
 				4325390C220A5B4C00309852 /* Info.plist */,
 			);
 			path = remoteControlUITests;
+			sourceTree = "<group>";
+		};
+		4358C8B9222716A500233E41 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				4358C8BA222716B500233E41 /* TVData.swift */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4358C8BB222716B500233E41 /* TVData.swift in Sources */,
 				432538ED220A5B4A00309852 /* ViewController.swift in Sources */,
+				4358C8B8222710FB00233E41 /* ConfigurationViewController.swift in Sources */,
 				43DDC63B221C66AB008FA80A /* DVRController.swift in Sources */,
 				432538EB220A5B4A00309852 /* AppDelegate.swift in Sources */,
 			);
