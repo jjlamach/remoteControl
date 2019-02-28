@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+/**
+    A data model for TV configuration.
+ */
 final class TVData {
     static let sharedInstance = TVData()
     private struct Data {

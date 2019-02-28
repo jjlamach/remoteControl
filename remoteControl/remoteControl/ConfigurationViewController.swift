@@ -24,7 +24,7 @@ class ConfigurationViewController: UIViewController {
     var currentChannel: String = "1"
     
     
-    // thew new button name.
+    // thew new button name & segmentIndex.
     var newBtnName: String = ""
     var segmentIndex: Int = 0
     
@@ -39,6 +39,9 @@ class ConfigurationViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
+    /**
+     Sets default values.
+    */
     private func defaultValues() {
         self.channelLabel.text = "1"
         self.channelRangeChanger.value = Double(currentChannel)!
@@ -46,7 +49,9 @@ class ConfigurationViewController: UIViewController {
         self.newBtnName = ""
     }
     
-
+    /**
+        Function for segment control
+    */
     @IBAction func channelSelector(_ sender: UISegmentedControl) {
         var segmentVals: [Int: String] = [:]
         let size = sender.numberOfSegments
@@ -65,7 +70,7 @@ class ConfigurationViewController: UIViewController {
     
     
     /**
-     The Stepper
+      The Stepper
     */
     @IBAction func channelChanged(_ sender: UIStepper) {
         sender.minimumValue = 1
@@ -75,8 +80,8 @@ class ConfigurationViewController: UIViewController {
     
     
     /**
-     When the user hits return after entering the new button name, the data is saved in the
-     object TVData.swift
+      When the user hits return after entering the new button name, the data is passed to the
+      object TVData.swift
     */
     @IBAction func editingEnded(_ sender: UITextField) {
         let minSize = 4
@@ -105,7 +110,9 @@ class ConfigurationViewController: UIViewController {
     
     
 
-    
+    /**
+      Dismisses the keyboard when the label is not touched and when it receives a "return".
+    */
     @IBAction func textFieldNotTouched(_ sender: UITextField) {
         sender.resignFirstResponder()
         self.view.endEditing(true)
@@ -113,7 +120,7 @@ class ConfigurationViewController: UIViewController {
     
     
     /**
-     Helper function for editingDidEnd function.
+     Helper function for "editingDidEnd" function.
     */
     private func setNewButtonName(_ textField: UITextField) {
         if self.channelLabel.text == "1" {
@@ -135,7 +142,9 @@ class ConfigurationViewController: UIViewController {
         TVData.sharedInstance.setButtonName(self.newBtnName, self.segmentIndex)
     }
     
-    
+    /**
+        Saves the configuration to the TVData.swift object.
+    */
     @IBAction func saveConfiguration(_ sender: UIButton) {
         if self.labelTextField.text == "" {
             return
@@ -144,7 +153,9 @@ class ConfigurationViewController: UIViewController {
     }
     
     
-    
+    /**
+        Cancels the action.
+    */
     @IBAction func cancel(_ sender: UIButton) {
         self.labelTextField.text = ""
     }
